@@ -53,6 +53,7 @@
 
 			require("Conexion.php");
 			$conexion = new mysqli($Servidor, $Usuario, $Contrasena, $BaseDeDatos);
+			$conexion -> set_charset("utf8");
 
 			if (isset($_POST['save'])) {
 				$SQL = "Insert INTO libros VALUES ( '$title' , '$author' , $cantidad , $price , '$Opcion' )";
