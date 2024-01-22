@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!--<link rel="stylesheet" href="style.css"> -->
+    <style type="text/css">
+        * {
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "segoe ui", roboto, oxygen, ubuntu, cantarell, "fira sans", "droid sans", "helvetica neue", Arial, sans-serif;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body{
+            background-color: #000000;
+        }
+        .CasiBody {
+            width: 400px;
+            background-color: #ffffff;
+            box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
+            margin: 100px auto;
+        }
+        .CasiBody h1 {
+            text-align: center;
+            color: #5b6574;
+            font-size: 24px;
+            padding: 20px 0 20px 0;
+            border-bottom: 1px solid #dee0e4;
+        }
+        .CasiBody form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding-top: 20px;
+        }
+        .CasiBody form label {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            height: 50px;
+            background-color:  #7690db;
+            color: #ffffff;
+        }
+        .CasiBody form input[type="password"], .CasiBody form input[type="text"] {
+            width: 310px;
+            height: 50px;
+            border: 1px solid #dee0e4;
+            margin-bottom: 20px;
+            padding: 0 15px;
+        }
+        .CasiBody form input[type="submit"] {
+            width: 100%;
+            padding: 15px;
+           margin-top: 20px;
+            background-color:  #7690db;
+            border: 0;
+            cursor: pointer;
+            font-weight: bold;
+            color: #000000;
+            transition: background-color 0.2s;
+        }
+        .CasiBody form input[type="submit"]:hover {
+          background-color: #7690db;
+            transition: background-color 0.2s;
+        }
+    </style>
+</head>
+<body>
+    <div class="CasiBody">
+        <h1>Iniciar Sesion</h1>
+
+        <form action="autenticacion.php" method="post">
+            <label for="username">
+               <img src="/images/login.ico" width="55%">
+            </label>
+            <input type="text" name="username"
+            placeholder="Usuario" id="username" required>
+            <label for="password">
+                 <img src="/images/password.ico" width="60%">
+            </label>
+            <input type="password" name="password"
+            placeholder="Contraseña" id="password" required>
+            <input type="submit" value="Acceder">
+        </form>
+    </div>
+
+</body>
+</html>

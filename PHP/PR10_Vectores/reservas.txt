@@ -1,0 +1,5 @@
+Juan Pérez | El señor de los anillos | 2023-12-01
+María Rodríguez | Cien años de soledad | 2023-12-05
+Pedro Gómez | Harry Potter y la piedra filosofal | 2023-12-10
+Ana Martínez | Fahrenheit 451 | 2023-12-15
+Luis Sánchez | Crimen y castigo | 2023-12-20
