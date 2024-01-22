@@ -1,8 +1,8 @@
 <?php
 	$servidor = 'localhost';
 	$puerto = '3306';
-	$usuario = 'root';
-	$password = '';
+	$usuario = 'app';
+	$password = 'Jlean92@yo';
 	$BaseDatos = 'ASIR';
 
 ?>
