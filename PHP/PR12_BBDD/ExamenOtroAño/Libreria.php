@@ -8,6 +8,7 @@
 <body>
 	<center>
 	<form>
+		<h2>LIBRERIA - JORGE LEÓN</h2>
 		<label>Titulo :</label>
 		<input type="text" name="title"><br>
 		<label>Autor :</label>
