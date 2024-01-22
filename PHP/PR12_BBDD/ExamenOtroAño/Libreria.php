@@ -6,6 +6,7 @@
 	<title></title>
 </head>
 <body>
+	<center>
 	<form>
 		<label>Titulo :</label>
 		<input type="text" name="title"><br>
@@ -33,5 +34,6 @@
 		<input type="submit" name="aceptar" value="Aceptar">
 		<input type="reset" name="limpiar" value="Limpiar formulario">
 	</form>
+	</center>
 </body>
 </html>
