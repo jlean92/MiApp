@@ -52,7 +52,7 @@
 
 
 			require("Conexion.php");
-			$conexion = new mysqli($Servidor.":".$Puerto, $Usuario, $Contraseña, $BaseDeDatos);
+			$conexion = new mysqli($Servidor, $Usuario, $Contrasena, $BaseDeDatos);
 
 			if (isset($_POST['save'])) {
 				$SQL = "Insert INTO libros VALUES ( '$title' , '$author' , $cantidad , $price , '$Opcion' )";
