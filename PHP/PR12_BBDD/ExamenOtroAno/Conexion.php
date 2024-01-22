@@ -1,7 +1,7 @@
 <?php
 
 $Servidor= "localhost";
-$Usuario = "root";
+$Usuario = "app";
 $Contrasena = "Jlean92@yo";
 $BaseDeDatos = "libreria_ex";
 
