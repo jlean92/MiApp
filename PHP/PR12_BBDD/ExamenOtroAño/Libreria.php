@@ -5,7 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title></title>
 </head>
-<body>
+<body style="background-color:#FFF000;">
 	<center>
 		<?php
 			if (!isset($_POST['aceptar'])) {
@@ -23,7 +23,7 @@
 		<label>Precio ejemplar :</label>
 		<input type="text" name="price"><br>
 		<h2>Genero:</h2>
-		<input type="radio" name="radio" value="Novela">
+		<input type="radio" name="radio" value="Novela" checked>
 		<label>Novela</label><br>
 		<input type="radio" name="radio" value="Cuento">
 		<label>Cuento</label><br>
@@ -40,6 +40,7 @@
 		<input type="submit" name="aceptar" value="Aceptar">
 		<input type="reset" name="limpiar" value="Limpiar formulario">
 	</form>
+	
 		<?php
 		}
 		else{
@@ -54,7 +55,7 @@
 			$conexion = new mysqli($Servidor.":".$Puerto, $Usuario, $Contraseña, $BaseDeDatos);
 
 			if (isset($_POST['save'])) {
-				$SQL = "Insert INTO libros ( $title , $author , $cantidad , $precio , $Opcion )";
+				$SQL = "Insert INTO libros VALUES ( '$title' , '$author' , $cantidad , $price , '$Opcion' )";
 				$resultado = $conexion -> query($SQL);
 				if ($resultado) {
 					echo "Se ha insertado correctamente";
@@ -66,28 +67,96 @@
 				$SQL = "SELECT * FROM libros";
 				$resultado = $conexion -> query($SQL);
 				$contador = 0;
+				echo "<h2>LIBRERIA - JORGE LEÓN</h2>";
+				echo "<table border style='text-align: center;'";
 				echo "<tr>";
 				foreach ($resultado as $key => $fila) {
+					if ($contador == 0) {
 					foreach ($fila as $key => $value) {
-						if ($contador == 0) {
-							echo "<td>$key</td>";
+							echo "<th>$key</th>";
 						}
+						echo "<th>Precio Total</th>";
 						$contador++;
 					}
 				}
 				echo "</tr>";
 
 				foreach ($resultado as $key => $fila) {
+					if (strcmp($fila['Genero'],"$Opcion") == 0) {					
 					echo "<tr>";
 					foreach ($fila as $key => $value) {
-						echo "$value";
+						echo "<td>$value</td>";
 					}
+					$media = $fila['Cantidad'] * $fila['Precio'];
+					echo "<td>$media</td>";
 					echo "</tr>";
+					}
 				}
+
+				echo "</table>";
 			}
 			if (isset($_POST['contar'])) {
 				$SQL = "SELECT * FROM libros";
+				$resultado = $conexion -> query($SQL);
+				$contadorNovela = 0;
+				$promedioNovela = 0;
+				$contadorPoesia = 0;
+				$promedioPoesia = 0;
+				$contadorCuento = 0;
+				$promedioCuento = 0;
+				foreach ($resultado as $key => $fila) {	
+					if (strcmp($fila['Genero'],"Novela") == 0) {
+						$contadorNovela++;
+						$total = $fila['Cantidad'] * $fila['Precio'];
+						$promedioNovela = $promedioNovela + $total;
+					}
+					if (strcmp($fila['Genero'],"Poesia") == 0) {
+						$contadorPoesia++;
+						$total = $fila['Cantidad'] * $fila['Precio'];
+						$promedioPoesia = $promedioPoesia + $total;
+					}
+					if (strcmp($fila['Genero'],"Cuento") == 0) {
+						$contadorCuento++;
+						$total = $fila['Cantidad'] * $fila['Precio'];
+						$promedioCuento = $promedioCuento + $total;
+					}
+
+				}
+				
+					$mediaNovela = $promedioNovela / $contadorNovela;
+					
+					$mediaCuento = $promedioCuento / $contadorCuento;
+					
+					$mediaPoesia = $promedioPoesia / $contadorPoesia;
+			
+			
+			?>
+			<h2>LIBROS POR GENERO</h2>
+				<table border="2" style="text-align: center;">
+					<tr>
+						<th>Genero</th>
+						<th>Unidades</th>
+						<th>Promedio Precio Total</th>
+					</tr>
+					<tr>
+						<td>Novela</td>
+						<td><?php echo "$contadorNovela"; ?></td>
+						<td><?php echo "$mediaNovela"; ?></td>
+					</tr>
+					<tr>
+						<td>Poesía</td>
+						<td><?php echo "$contadorPoesia"; ?></td>
+						<td><?php echo "$mediaCuento"; ?></td>
+					</tr>
+					<tr>
+						<td>Cuento</td>
+						<td><?php echo "$contadorCuento"; ?></td>
+						<td><?php echo "$mediaPoesia"; ?></td>
+					</tr>
+				</table>
+				<?php
 			}
+
 		}
 		?>
 	</center>
