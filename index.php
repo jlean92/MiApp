@@ -85,20 +85,30 @@
         }
     // evitar inyección sql
         $SQL = "SELECT UserName, Contrasena FROM users";
-
         $resultado = $conexion -> query($SQL);
         $acceso = false;
             foreach ($resultado as $key => $fila) {
-                if (strcasecmp($_POST['username'], $fila['UserName'])) {
-                    $fila['Contrasena'];
+                foreach ($fila as $key => $value) {
+                    //echo "$value <br>";
+                }
+            }
+            foreach ($resultado as $key => $fila) {
+                if (strcmp($_POST['username'], $fila['UserName'])) {
                     if (password_verify($_POST['password'], $fila['Contrasena'])) {
                         $acceso = true;
                     }
                 }
             }
-
         if ($acceso) {
             echo "Se ha accedido correctamente";
+            session_start();
+            session_regenerate_id();
+                $_SESSION['loggedin'] = TRUE;
+                $_SESSION['name'] = $_POST['username'];
+                $_SESSION['id'] = $id;
+                $_SESSION['FirstName'] = $FirstName;
+                header('Location: '.'inicio.php');
+
         } else {
             // usuario incorrecto
             echo "Error";
