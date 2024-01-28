@@ -7,4 +7,3 @@ git add .
 git commit -m "Changes committed: $TODAY from $Equipo"
 git push --set-upstream origin main
 git pull
-ssh root@192.168.1.16 git -C /var/www/html/ pull
