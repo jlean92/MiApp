@@ -96,16 +96,10 @@
                 }
             }
         if ($acceso) {
-            // la conexion sería exitosa, se crea la sesión
-            session_regenerate_id();
-            $_SESSION['loggedin'] = TRUE;
-            $_SESSION['name'] = $_POST['username'];
-            $_SESSION['id'] = $id;
-            $_SESSION['FirstName'] = $FirstName;
-            header('Location: inicio.php');
+            echo "Se ha accedido correctamente";
         } else {
             // usuario incorrecto
-            header('Location: index.php');
+            echo "Error";
         }
     }
     ?>
