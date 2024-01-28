@@ -90,7 +90,7 @@
         $acceso = false;
             foreach ($resultado as $key => $fila) {
                 if (strcasecmp($_POST['username'], $fila['UserName'])) {
-                    if (strcasecmp($_POST['password'], $fila['Contrasena'])) {
+                    if (password_verify($_POST['password'], $fila['Contrasena'])) {
                         $acceso = true;
                     }
                 }
