@@ -1,4 +1,4 @@
-﻿cd "D:\Git\MiApp"
+﻿cd "D:\xampp\htdocs\MiApp"
 $TODAY= date
 $Equipo= hostname
 git remote rm origin
@@ -7,4 +7,3 @@ git add .
 git commit -m "Changes committed: $TODAY from $Equipo"
 git push --set-upstream origin main
 git pull
-ssh root@192.168.1.16 git -C /var/www/html/ pull
