@@ -1,4 +1,4 @@
-﻿cd "c:\xampp\htdocs\MiApp"
+﻿cd "D:\Git\MiApp"
 $TODAY= date
 $Equipo= hostname
 git remote rm origin
