@@ -84,30 +84,30 @@
             echo "No se han introducido usuarios";
         }
     // evitar inyección sql
-    $SQL = "SELECT UserName, Contrasena FROM users";
+        $SQL = "SELECT UserName, Contrasena FROM users";
 
-    $resultado = $conexion -> query($SQL);
-    $acceso = false;
-        foreach ($resultado as $key => $fila) {
-            if (strcasecmp($_POST['username'], $fila['UserName'])) {
-                if (strcasecmp($_POST['password'], $fila['Contrasena'])) {
-                    $acceso = true;
+        $resultado = $conexion -> query($SQL);
+        $acceso = false;
+            foreach ($resultado as $key => $fila) {
+                if (strcasecmp($_POST['username'], $fila['UserName'])) {
+                    if (strcasecmp($_POST['password'], $fila['Contrasena'])) {
+                        $acceso = true;
+                    }
                 }
             }
+        if ($acceso) {
+            // la conexion sería exitosa, se crea la sesión
+            session_regenerate_id();
+            $_SESSION['loggedin'] = TRUE;
+            $_SESSION['name'] = $_POST['username'];
+            $_SESSION['id'] = $id;
+            $_SESSION['FirstName'] = $FirstName;
+            header('Location: inicio.php');
+        } else {
+            // usuario incorrecto
+            header('Location: index.php');
         }
-    if ($acceso) {
-        // la conexion sería exitosa, se crea la sesión
-        session_regenerate_id();
-        $_SESSION['loggedin'] = TRUE;
-        $_SESSION['name'] = $_POST['username'];
-        $_SESSION['id'] = $id;
-        $_SESSION['FirstName'] = $FirstName;
-        header('Location: inicio.php');
-    } else {
-        // usuario incorrecto
-        header('Location: index.php');
     }
-    
     ?>
 </body>
 </html>
