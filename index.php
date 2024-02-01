@@ -13,7 +13,6 @@
         body {
             background-color:#ffffff;
         }
-        
         h1 {
             text-align: center;
             background-color:#7690db;
@@ -36,7 +35,6 @@
         .campo {
             background-color:#ffffff;
         }
-
         input[type="submit"] {
             width: 100%;
             padding: 6%;
@@ -53,7 +51,7 @@
         }
     </style>
 </head>
-<body>
+<body>                      
     <?php
         if (isset($_POST['boton'])==false) {
             // code...
@@ -68,6 +66,7 @@
             <tr class="campo"><td><label for="password"><img src="images/password.ico" width="40em"></label></td>
             <td><input type="password" name="password" placeholder="Contraseña" id="password" required></td></tr>
             <tr><td colspan="3"><input type="submit" name="boton" value="Acceder"></td></tr>
+
         </form>
     </table>
     </div>
@@ -84,7 +83,7 @@
             echo "No se han introducido usuarios";
         }
     // evitar inyección sql
-        $SQL = "SELECT UserName, Contrasena FROM users";
+        $SQL = "SELECT UserName, Contrasena, FirstName FROM users";
         $resultado = $conexion -> query($SQL);
         $acceso = false;
             foreach ($resultado as $key => $fila) {
@@ -95,6 +94,7 @@
             foreach ($resultado as $key => $fila) {
                 if (strcmp($_POST['username'], $fila['UserName'])) {
                     if (password_verify($_POST['password'], $fila['Contrasena'])) {
+                        $FirstName = $fila['FirstName'];
                         $acceso = true;
                     }
                 }

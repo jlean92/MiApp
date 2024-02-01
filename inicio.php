@@ -7,50 +7,24 @@ session_start();
     }
 
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <title>Inicio</title>
     <style type="text/css">
         body {
-            background-color: black;
-        }
-        .CasiBody {
-            background-color: white;
-            display: block;
-            margin-left: 10%;
-            width: 70%;
-            padding-bottom: 8%;
         }
         h2 {
             text-align: center;
         }
         header {
-            
-            background-color: #849cea ;
-            text-align: center;
-            align-items: center;
-            
+            position: relative;
+            background-color: #849cea;
+            padding: 1%;
         }
-
         #Titulo {
-            font-size: 150%;
-            margin-left: 10%;
-        }
-
-        #user {
-            font-style: italic;
-            font-weight: 700
-        }
-        section {
-            text-align: center;
-        }
-        section a {
-            margin: 11px;
+            font-size: 120%;
         }
         div {
             display: inline-block;
@@ -58,50 +32,35 @@ session_start();
         .content {
             display: block;
         }
-        .picture {
-            background-color: #F9F9F9;
-            border: 1px solid #CCCCCC; padding: 3px;
-            font: 11px/1.4em Arial, sans-serif;
+        .Enlaces {
+            color: black;
+            text-decoration: none;
         }
-        img {
-            border: 1px solid #CCCCCC;
-            vertical-align:middle;
-            margin-bottom: 3px;
-        }
-        #menu {
-            margin-right: 8%;
-            margin-left: 5%;
-        }
-        #logoff {
-            font-size: 60%;
-            float: right;
-            margin-right:5% ;
-            align-self: center;
-        }
+        .Button {
+            font-size: 10px;
+        }        
     </style>
 </head>
-
 <body class="loggedin">
-<div class="CasiBody">
-    <header ><span id="Titulo">Bienvenido  <span id="user"><?= $_SESSION['FirstName'] ?></span> a su aplicacion de vida</span><span><a class="Button" id="logoff" href="cerrar-sesion.php"> cerrar sesion</a></span></header>
-    <nav class="navtop">
-        
-    </nav>
+    
+    <header >
+        <center><span id="Titulo">Bienvenido <?php echo $_SESSION['FirstName']; ?> a su aplicacion de vida</span></center>
+        <span><button class="Button" id="logoff" onclick = "window.location.href='cerrar-sesion.php';">Cerrar Sesion</button></span></header>
+    <center>
 
     <div class="content">
         <h2>Página de Inicio</h2>
     </div>
-    <section>
-    <div class="picture"><a href="/Clases/clase.php"><img src="images/libros.ico" width="150px" height="150px"></a><br/>Clases</div>
-    <div class="picture"><a href="InProgress.html" ><img src="images/ejercicio.ico" width="150px" height="150px"></a><br/>Ejercicio</div>
-    <div class="picture"><a href="InProgress.html" ><img src="images/Limpieza.ico" wicdth="150px" height="150px"></a><br/>Tareas</div>
-    <br><br>
-    <div class="picture"><a href="Dieta/Dieta.php" ><img src="images/comida.ico" width="150px" height="150px"></a><br/>Dieta</div>
-    <div class="picture"><a href="InProgress.html" ><img src="images/trabajo.ico" width="150px" height="150px"></a><br/>Trabajo</div>
+    
+    <div class="picture"><a class="Enlaces" href="Clases/clase.php"><img src="images/libros.ico" width="250px" height="250px"><br/>Clases</a></div>
+    <div class="picture"><a class="Enlaces" href="InProgress.html"><img src="images/ejercicio.ico" width="250px" height="250px"><br/>Ejercicio</div>
+    <div class="picture"><a class="Enlaces" href="InProgress.html"><img src="images/Limpieza.ico" wicdth="250px" height="250px"><br/>Tareas</a></div>
+    <div class="picture"><a class="Enlaces" href="Dieta/Dieta.php"><img src="images/comida.ico" width="250px" height="250px"><br/>Dieta</a></div>
+    <div class="picture"><a class="Enlaces" href="InProgress.html"><img src="images/trabajo.ico" width="250px" height="250px"><br/>Trabajo</a></div>
     <br/><br/>
-    <a id="menu" href="inicio.php">Volver a Inicio</a>
-    </section>
-</div>
+    <button id="menu" onclick = "window.location.href='cerrar-sesion.php';">Volver a Inicio</button>
+</center>
+
 </body>
 
 </html>
